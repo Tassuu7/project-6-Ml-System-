@@ -1,0 +1,5 @@
+from datamorph.benchmarks.latency_benchmark import LatencyBenchmarkRunner
+from datamorph.benchmarks.throughput_benchmark import ThroughputBenchmarkRunner
+from datamorph.benchmarks.scalability_benchmark import ScalabilityBenchmarkRunner
+from datamorph.benchmarks.drift_simulation import DriftSimulationRunner
+from datamorph.benchmarks.quality_stress import QualityStressRunner
