@@ -1,0 +1,250 @@
+customer_id,age,tenure,monthly_charges,total_charges,contract_type,tech_support,churn
+10001,53,42,66.67,2794.03,One-Year,Yes,0
+10002,51,61,97.27,5929.42,One-Year,No internet,0
+10003,19,12,102.07,1228.1,Month-to-Month,Yes,1
+10004,39,65,104.32,6775.53,One-Year,Yes,0
+10005,18,19,53.2,1017.4,One-Year,No internet,0
+10006,36,41,35.9,1480.93,Two-Year,No,0
+10007,52,35,66.88,2333.99,One-Year,Yes,0
+10008,37,51,86.49,4414.53,One-Year,Yes,0
+10009,48,69,97.17,6705.83,One-Year,No,0
+10010,68,51,85.85,4386.4,One-Year,No internet,0
+10011,71,46,55.23,2548.44,Month-to-Month,No,0
+10012,35,67,26.24,1748.41,One-Year,Yes,1
+10013,57,31,73.1,2265.94,Month-to-Month,No internet,0
+10014,42,29,40.38,1163.23,Month-to-Month,Yes,0
+10015,30,58,80.08,4651.34,Month-to-Month,No internet,0
+10016,56,7,24.94,176.19,Month-to-Month,No internet,0
+10017,35,58,42.0,2427.08,Month-to-Month,Yes,0
+10018,37,12,35.0,418.86,One-Year,Yes,0
+10019,32,62,104.71,6482.56,Month-to-Month,Yes,1
+10020,49,7,110.89,768.11,Month-to-Month,Yes,1
+10021,23,27,71.52,1940.73,Two-Year,No,0
+10022,57,15,85.83,1280.76,One-Year,No,0
+10023,33,44,63.8,2798.02,Two-Year,No,0
+10024,56,34,41.51,1409.0,Two-Year,No,0
+10025,31,67,37.97,2535.09,Month-to-Month,No,0
+10026,47,9,29.58,256.27,Two-Year,No,0
+10027,23,13,33.29,425.73,Two-Year,No,0
+10028,39,3,98.99,305.23,One-Year,Yes,1
+10029,20,5,112.1,555.59,Two-Year,No internet,0
+10030,52,43,87.53,3754.71,Month-to-Month,No,0
+10031,70,7,106.76,746.41,One-Year,No internet,0
+10032,38,19,83.41,1589.03,Month-to-Month,No internet,0
+10033,51,65,64.29,4184.24,Month-to-Month,No internet,0
+10034,71,72,77.41,5569.96,Month-to-Month,Yes,1
+10035,63,38,45.77,1748.2,One-Year,No,0
+10036,34,1,88.34,89.63,Month-to-Month,Yes,1
+10037,63,36,113.49,4081.19,Two-Year,No internet,0
+10038,43,63,115.56,7280.18,Month-to-Month,No,1
+10039,67,4,81.6,335.67,One-Year,No,0
+10040,32,43,111.32,4788.96,Two-Year,No,1
+10041,44,47,52.23,2449.04,One-Year,No,0
+10042,56,71,50.39,3571.7,Month-to-Month,Yes,0
+10043,20,67,111.47,7471.14,Month-to-Month,No,0
+10044,66,36,78.11,2815.23,Month-to-Month,Yes,1
+10045,27,64,101.63,6509.66,Two-Year,No internet,0
+10046,25,8,49.87,394.94,Two-Year,Yes,0
+10047,20,17,95.43,1626.1,One-Year,No internet,0
+10048,43,56,31.92,1785.63,Two-Year,Yes,0
+10049,66,52,96.11,5006.29,Two-Year,No,1
+10050,71,51,53.75,2747.16,Month-to-Month,No,0
+10051,58,72,112.99,8141.16,One-Year,No,0
+10052,74,56,31.55,1775.81,Two-Year,No,0
+10053,37,29,27.92,808.02,Two-Year,No,0
+10054,22,30,64.88,1955.96,Two-Year,No,0
+10055,34,66,34.56,2279.24,Two-Year,Yes,0
+10056,43,50,33.64,1687.84,One-Year,No internet,0
+10057,33,41,57.26,2338.29,One-Year,Yes,1
+10058,49,48,65.35,3133.02,Month-to-Month,No internet,0
+10059,52,60,59.3,3564.03,One-Year,Yes,0
+10060,59,69,60.9,4200.66,Two-Year,No,0
+10061,67,26,29.92,768.69,One-Year,No,0
+10062,38,62,33.61,2075.36,One-Year,No,0
+10063,49,57,38.5,2200.61,Two-Year,No,0
+10064,36,66,100.86,6665.35,One-Year,No,1
+10065,66,34,98.3,3340.29,Two-Year,No internet,1
+10066,70,37,80.68,2990.55,One-Year,Yes,0
+10067,74,7,61.05,435.69,Month-to-Month,No internet,0
+10068,47,37,50.98,1885.95,Month-to-Month,No internet,0
+10069,35,15,82.0,1220.96,One-Year,No,1
+10070,45,57,55.14,3145.71,One-Year,Yes,0
+10071,60,48,73.06,3497.15,One-Year,No,0
+10072,56,72,93.25,6712.44,One-Year,No,0
+10073,42,71,64.93,4619.7,Two-Year,No,0
+10074,50,39,27.78,1088.92,Month-to-Month,No internet,0
+10075,25,14,61.72,861.42,One-Year,Yes,0
+10076,39,33,106.48,3523.74,Month-to-Month,Yes,0
+10077,43,36,59.77,2154.73,One-Year,No,0
+10078,27,15,82.85,1246.84,One-Year,No internet,1
+10079,38,42,92.29,3867.87,One-Year,No internet,0
+10080,33,41,94.73,3879.81,One-Year,Yes,0
+10081,39,24,21.14,514.68,One-Year,No,0
+10082,40,4,66.15,272.89,One-Year,No,0
+10083,53,35,87.98,3073.6,One-Year,No internet,0
+10084,34,54,107.33,5788.86,One-Year,No internet,1
+10085,19,43,42.17,1822.33,One-Year,No internet,0
+10086,53,15,94.52,1424.82,Two-Year,No,0
+10087,45,2,30.52,61.37,One-Year,No,0
+10088,55,38,81.95,3117.79,One-Year,No internet,1
+10089,52,61,32.96,2007.12,Two-Year,Yes,0
+10090,37,47,37.79,1768.65,Month-to-Month,No,0
+10091,64,72,117.57,8464.61,Month-to-Month,No,0
+10092,57,35,55.63,1942.14,Month-to-Month,Yes,0
+10093,67,21,111.57,2344.77,One-Year,No internet,0
+10094,28,21,66.88,1409.31,One-Year,Yes,1
+10095,68,40,48.59,1946.05,Two-Year,Yes,1
+10096,26,39,83.08,3247.21,Two-Year,No,0
+10097,75,21,20.93,438.34,Two-Year,No internet,1
+10098,54,61,49.17,2993.53,Month-to-Month,No,1
+10099,47,69,85.4,5886.71,Month-to-Month,No internet,1
+10100,60,51,95.05,4842.31,Two-Year,No internet,0
+10101,70,20,21.72,428.91,Two-Year,Yes,0
+10102,58,14,32.64,456.94,Month-to-Month,No internet,0
+10103,18,28,101.32,2835.57,Two-Year,Yes,0
+10104,29,49,83.1,4071.66,One-Year,Yes,1
+10105,34,32,87.92,2821.52,One-Year,Yes,0
+10106,61,38,51.03,1936.39,Two-Year,Yes,0
+10107,55,42,77.97,3267.69,Two-Year,No internet,0
+10108,68,22,90.05,1979.27,One-Year,Yes,0
+10109,31,63,47.48,2996.33,Two-Year,Yes,0
+10110,40,57,68.45,3905.43,Month-to-Month,No internet,0
+10111,32,47,28.44,1343.65,Two-Year,No internet,0
+10112,39,11,36.91,399.87,Two-Year,Yes,0
+10113,64,56,20.24,1133.8,Month-to-Month,No,0
+10114,42,56,29.84,1661.45,One-Year,Yes,0
+10115,75,53,34.42,1820.91,Two-Year,Yes,0
+10116,40,49,72.3,3545.07,Two-Year,Yes,0
+10117,59,16,37.49,608.67,One-Year,Yes,0
+10118,73,62,108.75,6747.2,Two-Year,No,0
+10119,43,16,69.02,1108.88,One-Year,Yes,0
+10120,21,33,62.71,2075.69,One-Year,No internet,0
+10121,44,65,92.35,6011.64,Month-to-Month,No internet,0
+10122,74,37,111.11,4120.62,One-Year,Yes,0
+10123,75,20,44.76,902.54,Two-Year,No internet,1
+10124,48,25,28.19,713.22,One-Year,Yes,0
+10125,41,15,46.06,688.03,One-Year,No,0
+10126,71,63,34.96,2204.86,Two-Year,Yes,0
+10127,31,10,74.44,746.88,Month-to-Month,No internet,1
+10128,60,26,98.69,2559.2,One-Year,No,0
+10129,59,25,26.78,662.52,One-Year,No,0
+10130,56,16,57.6,913.56,One-Year,No internet,0
+10131,57,68,23.92,1618.09,One-Year,No internet,1
+10132,69,50,109.29,5465.23,Two-Year,Yes,0
+10133,32,28,100.09,2807.88,Two-Year,No internet,0
+10134,53,61,110.79,6757.2,Two-Year,No,0
+10135,58,50,84.86,4234.7,One-Year,No internet,0
+10136,30,63,69.97,4405.27,Month-to-Month,No internet,0
+10137,71,48,30.05,1432.8,One-Year,Yes,0
+10138,31,61,47.14,2883.44,One-Year,No,0
+10139,43,17,75.87,1281.43,Two-Year,No internet,0
+10140,37,31,85.39,2651.26,One-Year,Yes,0
+10141,49,1,57.56,60.11,Two-Year,No,0
+10142,40,15,44.2,671.55,Two-Year,Yes,0
+10143,59,42,69.01,2898.5,Month-to-Month,Yes,0
+10144,59,56,80.27,4491.35,One-Year,No internet,0
+10145,41,32,90.89,2915.71,Two-Year,Yes,0
+10146,41,52,91.28,4748.88,Two-Year,Yes,0
+10147,42,17,81.73,1394.09,One-Year,Yes,0
+10148,48,34,89.69,3040.3,Two-Year,Yes,0
+10149,65,42,29.81,1244.6,Month-to-Month,No,1
+10150,62,21,57.68,1215.15,One-Year,Yes,0
+10151,22,19,29.22,552.87,Month-to-Month,No,0
+10152,52,49,64.33,3157.58,Month-to-Month,No internet,0
+10153,23,51,23.16,1189.64,Month-to-Month,No internet,0
+10154,39,55,51.82,2848.79,Month-to-Month,Yes,1
+10155,19,8,79.85,639.57,One-Year,No internet,1
+10156,41,61,57.29,3503.79,Month-to-Month,No internet,0
+10157,21,63,119.36,7510.81,Month-to-Month,Yes,0
+10158,45,35,72.21,2520.43,Month-to-Month,Yes,1
+10159,48,56,22.55,1261.9,Month-to-Month,Yes,0
+10160,54,60,76.05,4568.57,Month-to-Month,Yes,0
+10161,25,8,31.49,250.42,Two-Year,No,0
+10162,68,29,93.04,2704.06,Two-Year,No,0
+10163,31,12,33.43,401.74,Month-to-Month,Yes,0
+10164,59,2,81.07,156.52,One-Year,Yes,0
+10165,69,34,78.57,2671.74,One-Year,No internet,1
+10166,52,29,49.41,1438.06,One-Year,No,1
+10167,48,57,54.23,3098.04,Month-to-Month,Yes,1
+10168,39,66,111.84,7372.6,Two-Year,No internet,0
+10169,41,33,55.04,1808.39,Month-to-Month,No internet,0
+10170,43,10,84.38,840.29,One-Year,Yes,0
+10171,38,27,29.72,809.95,Month-to-Month,No,1
+10172,49,2,43.23,96.11,One-Year,Yes,0
+10173,54,62,32.32,2008.89,Month-to-Month,No internet,0
+10174,50,14,69.21,967.32,One-Year,No,0
+10175,35,57,32.65,1860.01,Month-to-Month,No internet,0
+10176,20,55,108.69,5982.9,One-Year,No,0
+10177,31,30,56.85,1713.75,One-Year,No internet,0
+10178,18,66,74.76,4932.55,Month-to-Month,No internet,0
+10179,20,42,75.82,3185.81,One-Year,Yes,0
+10180,50,20,99.81,1994.24,One-Year,No internet,0
+10181,62,53,21.8,1155.37,Month-to-Month,No,0
+10182,57,12,38.13,453.49,Two-Year,No,0
+10183,49,3,36.59,109.21,Month-to-Month,No internet,0
+10184,75,30,30.29,909.04,One-Year,Yes,0
+10185,48,65,63.72,4144.66,Month-to-Month,No internet,1
+10186,30,7,62.09,437.28,One-Year,No internet,0
+10187,36,51,109.84,5604.85,One-Year,No,0
+10188,23,26,37.54,969.19,Two-Year,Yes,0
+10189,27,61,73.53,4488.29,Month-to-Month,No,0
+10190,57,24,28.76,693.92,Month-to-Month,No,0
+10191,55,47,87.49,4113.35,One-Year,Yes,0
+10192,64,36,74.07,2675.4,One-Year,No internet,0
+10193,48,20,115.23,2310.88,Month-to-Month,No internet,0
+10194,39,27,24.01,640.72,Two-Year,Yes,0
+10195,37,72,63.68,4579.76,One-Year,No,1
+10196,48,64,77.28,4942.26,Two-Year,No internet,1
+10197,70,34,100.47,3412.72,Month-to-Month,No,0
+10198,36,37,35.42,1311.74,Two-Year,No internet,0
+10199,32,16,72.58,1161.45,Two-Year,No,1
+10200,21,55,45.66,2516.47,One-Year,No,0
+10201,62,66,99.12,6548.75,One-Year,No internet,0
+10202,19,34,46.96,1593.91,Month-to-Month,No internet,0
+10203,61,50,24.78,1245.28,One-Year,No,1
+10204,63,2,72.22,153.04,One-Year,Yes,0
+10205,59,8,113.88,909.83,One-Year,No,0
+10206,50,61,23.93,1465.18,One-Year,No,1
+10207,26,3,91.43,266.74,One-Year,Yes,0
+10208,21,41,119.24,4894.07,One-Year,No internet,0
+10209,23,25,93.03,2323.86,Month-to-Month,No internet,0
+10210,42,43,21.18,904.7,Month-to-Month,No,0
+10211,73,31,78.53,2440.69,Month-to-Month,No,0
+10212,24,34,67.53,2294.72,Two-Year,No,0
+10213,53,22,45.36,994.73,Two-Year,No,1
+10214,30,20,106.86,2139.99,Month-to-Month,No,0
+10215,28,42,80.5,3387.09,Two-Year,No internet,0
+10216,65,13,118.27,1541.89,Two-Year,No,0
+10217,18,32,74.39,2382.23,Month-to-Month,No internet,1
+10218,49,3,62.66,197.78,Two-Year,No internet,0
+10219,19,21,66.04,1384.43,Two-Year,No,1
+10220,71,43,96.95,4171.95,Two-Year,No internet,0
+10221,53,4,86.41,346.37,Two-Year,Yes,1
+10222,64,45,81.8,3671.6,Month-to-Month,No,0
+10223,38,2,83.49,157.03,One-Year,No internet,0
+10224,18,59,107.65,6359.25,Month-to-Month,No internet,0
+10225,40,43,68.27,2925.9,Two-Year,No internet,1
+10226,45,70,117.18,8202.55,Month-to-Month,No,0
+10227,23,23,55.81,1287.87,Month-to-Month,No,0
+10228,20,43,115.35,4950.58,One-Year,No internet,1
+10229,23,39,83.36,3254.86,Two-Year,No,0
+10230,18,64,66.24,4236.02,Month-to-Month,No,0
+10231,27,50,74.53,3731.83,Two-Year,Yes,0
+10232,45,61,87.94,5366.91,Month-to-Month,Yes,0
+10233,72,60,110.18,6617.01,One-Year,No,1
+10234,74,58,55.34,3218.58,Month-to-Month,Yes,0
+10235,67,68,40.91,2786.89,Two-Year,No internet,1
+10236,62,16,77.65,1239.03,Two-Year,No,0
+10237,45,55,71.16,3913.82,Month-to-Month,No internet,1
+10238,69,68,39.23,2677.4,Two-Year,No,0
+10239,24,20,34.79,701.27,Month-to-Month,Yes,0
+10240,68,46,84.48,3886.72,Month-to-Month,Yes,1
+10241,73,33,109.64,3617.58,Two-Year,Yes,0
+10242,52,30,63.61,1906.81,Month-to-Month,Yes,0
+10243,62,64,104.09,6666.66,Two-Year,Yes,0
+10244,67,69,40.23,2784.04,One-Year,Yes,0
+10245,68,7,20.58,153.13,One-Year,No,0
+10246,32,69,84.67,5849.55,Month-to-Month,Yes,0
+10247,24,50,37.96,1906.24,Two-Year,No,0
+10248,58,52,51.67,2682.42,Two-Year,Yes,0
+10249,32,62,100.11,6208.14,One-Year,No,0
