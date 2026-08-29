@@ -22,3 +22,4 @@ data/uploads/*
 data/exports/*
 !data/exports/.gitkeep
 data/*.json
+*.zip
