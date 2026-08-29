@@ -126,7 +126,7 @@ class DataMorphHTTPHandler(BaseHTTPRequestHandler):
             self.wfile.write(b"404 Not Found")
 
 
-def create_app(port: int = 8000) -> HTTPServer:
-    server_address = ("", port)
+def create_app(host: str = "127.0.0.1", port: int = 8000) -> HTTPServer:
+    server_address = (host, port)
     httpd = HTTPServer(server_address, DataMorphHTTPHandler)
     return httpd
