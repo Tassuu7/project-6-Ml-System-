@@ -1,0 +1,20 @@
+{
+  "name": "datamorph-studio",
+  "version": "2.4.0",
+  "description": "Production-Level ML Data Preprocessing Platform & Studio",
+  "main": "frontend/js/app.js",
+  "scripts": {
+    "start": "python run_server.py",
+    "test": "python -m unittest discover tests",
+    "measure": "python measure.py"
+  },
+  "keywords": [
+    "machine-learning",
+    "data-preprocessing",
+    "feature-engineering",
+    "mlops",
+    "data-drift"
+  ],
+  "author": "DataMorph Engineering",
+  "private": true
+}
