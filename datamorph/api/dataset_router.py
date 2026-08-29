@@ -39,7 +39,7 @@ def handle_upload(db, filename: str, content_str: str) -> tuple:
         "grade": quality["grade"],
     }
     db.set("datasets", dataset_id, metadata)
-    return 200, {"dataset": metadata, "preview": df.head(10).to_dict_records()}
+    return 200, {"dataset": metadata, "preview": df.head(200).to_dict_records()}
 
 
 def handle_get_dataset(db, dataset_id: str) -> tuple:
@@ -54,4 +54,4 @@ def handle_get_dataset(db, dataset_id: str) -> tuple:
 
     profiler = DatasetProfiler()
     profile = profiler.profile(df) if df is not None else {}
-    return 200, {"metadata": meta, "profile": profile, "preview": df.head(20).to_dict_records() if df else []}
+    return 200, {"metadata": meta, "profile": profile, "preview": df.head(200).to_dict_records() if df else []}

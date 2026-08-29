@@ -29,6 +29,13 @@ def handle_execute_pipeline(db, body: dict) -> tuple:
     for s_conf in steps_config:
         t_type = s_conf.get("type")
         cols = s_conf.get("columns", [])
+        if not cols:
+            if t_type in ("StandardScaler", "MinMaxScaler", "RobustScaler", "MaxAbsScaler", "QuantileTransformer", "PowerTransformer", "VectorNormalizer", "ZScoreOutlierDetector", "IQROutlierRemover"):
+                cols = df.numeric_columns()
+            elif t_type in ("OneHotEncoder", "OrdinalEncoder", "FrequencyEncoder", "BinaryEncoder"):
+                cols = df.categorical_columns()
+            else:
+                cols = df.columns
         params = s_conf.get("params", {})
         transformer = TransformerRegistry.create(t_type, columns=cols, **params)
         step = PipelineStep(name=s_conf.get("name", t_type), transformer=transformer, depends_on=s_conf.get("depends_on", []))
@@ -45,7 +52,7 @@ def handle_execute_pipeline(db, body: dict) -> tuple:
             "status": "success",
             "transformed_dataset_id": transformed_id,
             "shape": list(transformed_df.shape),
-            "preview": transformed_df.head(20).to_dict_records(),
+            "preview": transformed_df.head(200).to_dict_records(),
             "python_code": python_code,
             "dag": dag.to_dict()
         }

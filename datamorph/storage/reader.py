@@ -43,17 +43,21 @@ class DatasetReader:
             col_data: Dict[str, List[Any]] = {h: [] for h in headers}
             for row in data_rows:
                 for idx, h in enumerate(headers):
-                    val = row[idx].strip() if idx < len(row) else None
-                    if val == "" or val == "NA" or val == "null" or val == "None" or val == "NaN":
+                    raw_val = row[idx] if idx < len(row) else None
+                    if raw_val is None:
+                        col_data[h].append(None)
+                        continue
+                    val = str(raw_val).strip()
+                    if val == "" or val in ("NA", "null", "None", "NaN", "N/A", "nan", "?", "-"):
                         col_data[h].append(None)
                     else:
                         # Try parsing numeric
                         try:
-                            if "." in val or "e" in val.lower():
+                            if "." in val or ("e" in val.lower() and not val.isalpha()):
                                 col_data[h].append(float(val))
                             else:
                                 col_data[h].append(int(val))
-                        except ValueError:
+                        except (ValueError, TypeError):
                             col_data[h].append(val)
 
             df = DataFrame()
