@@ -31,21 +31,26 @@ def measure_codebase(root_dir: str = "."):
                 except Exception:
                     pass
 
-    print("=" * 60)
-    print("DATAMORPH STUDIO - CODEBASE PRODUCTION LOC AUDIT")
-    print("=" * 60)
-    print(f"Total Scanned Files : {total_files}")
-    print(f"Total Lines of Code : {total_loc:,} LOC")
-    print("-" * 60)
+    print("=" * 65)
+    print("DATAMORPH STUDIO - PRODUCTION CODEBASE LOC AUDIT")
+    print("=" * 65)
+    print(f"Total Scanned Production Files : {total_files}")
+    print(f"Total Lines of Code (All)      : {total_loc:,} LOC")
+    print("-" * 65)
     for ext, count in sorted(breakdown.items(), key=lambda x: x[1], reverse=True):
         pct = (count / total_loc) * 100.0 if total_loc > 0 else 0
-        print(f"  {ext:<10} : {count:>8,} LOC ({pct:>5.1f}%)")
-    print("=" * 60)
-    if total_loc >= 50000:
-        print("[SUCCESS] Minimum LOC Requirement (>50,000 LOC) PASSED!")
+        print(f"  {ext:<12} : {count:>8,} LOC ({pct:>5.1f}%)")
+    print("=" * 65)
+    
+    # Calculate strict production code (excluding .csv and .json)
+    strict_prod = sum(count for ext, count in breakdown.items() if ext in {'.py', '.js', '.css', '.html'})
+    print(f"STRICT PRODUCTION SOURCE LOC   : {strict_prod:,} LOC")
+    if strict_prod >= 50000:
+        print("[SUCCESS] TrainPlex Minimum Production LOC (>=50,000 LOC) PASSED!")
     else:
-        print(f"[INFO] Current LOC: {total_loc:,} LOC")
-    return total_loc
+        print(f"[INFO] Current Production LOC: {strict_prod:,} LOC")
+    print("=" * 65)
+    return strict_prod
 
 if __name__ == "__main__":
     loc = measure_codebase()

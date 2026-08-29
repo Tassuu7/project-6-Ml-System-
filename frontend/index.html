@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DataMorph Studio - ML Preprocessing Platform</title>
+    <title>DataMorph Studio - Enterprise ML Preprocessing Platform</title>
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/dashboard.css">
     <link rel="stylesheet" href="/css/pipeline.css">
@@ -33,15 +33,18 @@
                 <button class="nav-item" data-tab="drift">
                     <span class="nav-icon">📈</span> Drift & Monitoring
                 </button>
+                <button class="nav-item" data-tab="profiler">
+                    <span class="nav-icon">🔍</span> Deep Profiler
+                </button>
                 <button class="nav-item" data-tab="recipes">
                     <span class="nav-icon">⚙</span> Code Generator
                 </button>
             </nav>
 
             <div class="user-profile">
-                <div class="user-avatar">AD</div>
+                <div class="user-avatar">ML</div>
                 <div class="user-info">
-                    <div class="user-name" id="user-display-name">Admin</div>
+                    <div class="user-name" id="user-display-name">Admin User</div>
                     <div class="user-role">Lead ML Engineer</div>
                 </div>
                 <button class="btn-logout" id="btn-logout" title="Sign out">⎋</button>
@@ -53,13 +56,13 @@
             <!-- Topbar Header -->
             <header class="topbar">
                 <div class="topbar-left">
-                    <h1 class="page-title" id="current-view-title">Dataset Workspace</h1>
-                    <span class="status-indicator online">System Ready</span>
+                    <h1 class="page-title" id="current-view-title">Data Catalog & Workspace</h1>
+                    <span class="status-indicator online">● System Online</span>
                 </div>
                 <div class="topbar-right">
-                    <button class="btn btn-secondary" id="btn-sample-data">Load Sample Data</button>
+                    <button class="btn btn-secondary" id="btn-sample-data">⚡ Load Sample Data</button>
                     <label class="btn btn-primary" for="file-upload-input">
-                        <span>↑ Upload Dataset</span>
+                        <span>↑ Ingest CSV / JSON</span>
                         <input type="file" id="file-upload-input" accept=".csv,.json" style="display:none;">
                     </label>
                 </div>
@@ -76,32 +79,43 @@
                             <div class="metric-sub" id="active-ds-shape">0 rows × 0 cols</div>
                         </div>
                         <div class="metric-card">
-                            <div class="metric-label">Quality Score</div>
+                            <div class="metric-label">Data Quality Score</div>
                             <div class="metric-value" id="metric-quality-score">--</div>
                             <div class="metric-sub" id="metric-quality-grade">Grade: --</div>
                         </div>
                         <div class="metric-card">
-                            <div class="metric-label">Numeric Features</div>
+                            <div class="metric-label">Numeric Dimensions</div>
                             <div class="metric-value" id="metric-numeric-count">0</div>
-                            <div class="metric-sub">Auto-inferred continuous</div>
+                            <div class="metric-sub">Continuous / Discrete</div>
                         </div>
                         <div class="metric-card">
                             <div class="metric-label">Categorical Features</div>
                             <div class="metric-value" id="metric-cat-count">0</div>
-                            <div class="metric-sub">Nominal & Ordinal</div>
+                            <div class="metric-sub">Nominal / Ordinal</div>
                         </div>
                     </div>
 
                     <div class="card data-table-card">
                         <div class="card-header">
-                            <div class="card-title">Dataset Inspector</div>
+                            <div class="table-controls-left">
+                                <span class="card-title">Dataset Tabular Inspector</span>
+                                <input type="text" id="table-search-input" class="search-input" placeholder="🔍 Search records across all columns...">
+                            </div>
                             <div class="card-actions">
                                 <button class="btn btn-sm btn-outline" id="btn-export-csv">Export CSV</button>
                                 <button class="btn btn-sm btn-outline" id="btn-export-json">Export JSON</button>
                             </div>
                         </div>
                         <div class="table-container" id="dataset-table-container">
-                            <div class="empty-state">No dataset loaded. Upload a CSV or load sample data to begin.</div>
+                            <div class="empty-state">No dataset loaded. Click "Load Sample Data" or upload a CSV/JSON file to inspect and transform data.</div>
+                        </div>
+                        <div class="table-pagination" id="table-pagination-controls" style="display:none;">
+                            <span id="pagination-info">Showing rows 1-10 of 250</span>
+                            <div class="pagination-buttons">
+                                <button class="btn btn-sm btn-secondary" id="btn-page-prev">← Previous</button>
+                                <span id="current-page-display" class="page-num">1</span>
+                                <button class="btn btn-sm btn-secondary" id="btn-page-next">Next →</button>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -111,7 +125,7 @@
                     <div class="pipeline-grid">
                         <div class="card pipeline-palette">
                             <div class="card-header">
-                                <div class="card-title">Transformer Palette</div>
+                                <div class="card-title">Transformer Catalog</div>
                             </div>
                             <div class="transformer-list" id="palette-list">
                                 <!-- Dynamically populated -->
@@ -120,14 +134,14 @@
 
                         <div class="card pipeline-canvas-card">
                             <div class="card-header">
-                                <div class="card-title">DAG Pipeline Stages</div>
+                                <div class="card-title">Orchestrated Pipeline DAG</div>
                                 <div class="card-actions">
                                     <button class="btn btn-sm btn-secondary" id="btn-clear-pipeline">Clear</button>
-                                    <button class="btn btn-sm btn-success" id="btn-execute-dag">Execute Pipeline</button>
+                                    <button class="btn btn-sm btn-success" id="btn-execute-dag">Execute DAG Pipeline</button>
                                 </div>
                             </div>
                             <div class="pipeline-canvas" id="pipeline-steps-list">
-                                <div class="empty-pipeline">Add transformers from the palette to construct a DAG pipeline.</div>
+                                <div class="empty-pipeline">Select transformers from the left catalog to assemble a production preprocessing DAG.</div>
                             </div>
                         </div>
                     </div>
@@ -142,20 +156,20 @@
                             </div>
                             <div class="lab-controls">
                                 <div class="form-group">
-                                    <label class="form-label">Select Transformer</label>
+                                    <label class="form-label" for="lab-transformer-select">Select Algorithm</label>
                                     <select class="form-input" id="lab-transformer-select"></select>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label">Target Column(s)</label>
-                                    <select class="form-input" id="lab-column-select" multiple></select>
+                                    <label class="form-label" for="lab-column-select">Target Column(s)</label>
+                                    <select class="form-input" id="lab-column-select" multiple size="6"></select>
                                 </div>
-                                <button class="btn btn-primary" id="btn-run-lab-preview">Apply Preview</button>
+                                <button class="btn btn-primary" id="btn-run-lab-preview" style="width:100%;">Apply Sandbox Transformation</button>
                             </div>
                         </div>
 
                         <div class="card">
                             <div class="card-header">
-                                <div class="card-title">Real-Time Transformation Output</div>
+                                <div class="card-title">Live Transformation Preview</div>
                             </div>
                             <div class="table-container" id="lab-preview-table">
                                 <div class="empty-state">Select a transformer and click Apply to see live output.</div>
@@ -166,25 +180,38 @@
 
                 <!-- 4. Drift & Quality View -->
                 <section id="view-drift" class="view-panel">
-                    <div class="drift-header card">
+                    <div class="card">
                         <div class="card-header">
-                            <div class="card-title">Distribution Drift & PSI Analyzer</div>
-                            <button class="btn btn-sm btn-primary" id="btn-run-drift">Analyze Drift vs Transformed</button>
+                            <div class="card-title">Statistical Distribution Shift & PSI Monitor</div>
+                            <button class="btn btn-sm btn-primary" id="btn-run-drift">Run Drift Analysis</button>
                         </div>
                         <div id="drift-results-container" class="drift-results">
-                            <div class="empty-state">Execute a pipeline or load two datasets to run drift analysis.</div>
+                            <div class="empty-state">Load a dataset and execute a pipeline to view distribution drift metrics across features.</div>
                         </div>
                     </div>
                 </section>
 
-                <!-- 5. Code Generator & Recipes View -->
+                <!-- 5. Deep Profiler View -->
+                <section id="view-profiler" class="view-panel">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Deep Feature Profile & Rule Diagnostics</div>
+                            <button class="btn btn-sm btn-secondary" id="btn-run-deep-profile">Refresh Diagnostics</button>
+                        </div>
+                        <div id="profiler-results-container" class="drift-results">
+                            <div class="empty-state">Load or upload a dataset to view deep univariate moments, quantiles, and quality rule checks.</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 6. Code Generator & Recipes View -->
                 <section id="view-recipes" class="view-panel">
                     <div class="card">
                         <div class="card-header">
-                            <div class="card-title">Compiled Python Deployment Script</div>
+                            <div class="card-title">Compiled Standalone Python Deployment Script</div>
                             <button class="btn btn-sm btn-outline" id="btn-copy-python">Copy Code</button>
                         </div>
-                        <pre class="code-editor" id="compiled-python-code"># Build and execute a pipeline DAG to generate compiled standalone Python code</pre>
+                        <pre class="code-editor" id="compiled-python-code"># Assemble and execute a pipeline DAG to view compiled deployment code</pre>
                     </div>
                 </section>
             </div>

@@ -4,49 +4,71 @@ DataMorph Studio is an enterprise-grade Machine Learning data preprocessing, fea
 
 ---
 
-## Key Features
+## 1. Installation
 
-1. **Native High-Performance DataFrame Engine**:
-   - Column-oriented in-memory data structures with vector math, quantiles, and missing data detection.
-2. **30+ Production Transformers**:
-   - **Imputation**: Simple (Mean/Median/Mode), KNN, MICE, Iterative, Missing Indicator.
-   - **Scaling**: Standard, MinMax, Robust, MaxAbs, Quantile, Power (Yeo-Johnson & Box-Cox), Vector Normalizer.
-   - **Encoding**: One-Hot, Ordinal, Target (Bayes Smoothed), Weight of Evidence (WoE), CatBoost-style, Frequency, Binary.
-   - **Outliers**: Z-Score, IQR (Tukey's Fences), Isolation Forest, LOF, Mahalanobis Distance, Winsorizer.
-   - **Temporal**: Cyclical (Sin/Cos), Date-Time Feature Extractor, Lag/Lead Generator, Rolling Window Aggregators.
-   - **Text**: Text Cleaner, Regex Tokenizer, TF-IDF Vectorizer, Bag-of-Words Count Vectorizer, Sentiment Lexicon Features.
-   - **Discretization**: Equal-Width, Equal-Frequency (Quantile), 1D K-Means Clustering, Custom Cut Points.
-   - **Feature Selection**: Variance Threshold, Correlation Filter, Mutual Information, Chi-Square (X2), RFE, PCA.
-   - **Augmentation**: SMOTE (Synthetic Minority Over-sampling), Gaussian Noise Injection, Mixup, Majority Under-Sampling.
-3. **Interactive DAG Pipeline Engine**:
-   - Topological sorting, cycle detection, execution telemetry, and lineage tracking.
-4. **Data Drift & Quality Monitoring**:
-   - Population Stability Index (PSI) and Kolmogorov-Smirnov 2-sample distribution shift detection.
-5. **Interactive UI Dashboard**:
-   - Modern responsive web studio with data inspector, DAG builder, transformer lab, and code generator.
-6. **Zero External Framework Dependencies**:
-   - Runs out-of-the-box on standard Python 3.8+.
+### Clone and Setup Environment
+```bash
+# Clone repository
+git clone https://github.com/Tassuu7/project-6-Ml-System-repo.git
+cd project-6-Ml-System-repo
+
+# Create and activate Python virtual environment
+python -m venv venv
+source venv/bin/activate  # On Linux/macOS
+# or: venv\Scripts\activate  # On Windows
+
+# Install dependencies
+pip install -r requirements.txt
+npm install
+```
 
 ---
 
-## Quick Start
+## 2. Build
 
-### 1. Run the Server
+### Verify Build and Architecture
+```bash
+# Verify production LOC and code structure
+python measure.py
+
+# Docker container build
+docker build -t datamorph-studio:v2.4 .
+```
+
+---
+
+## 3. Run
+
+### Start the Application Server
 ```bash
 python run_server.py
 ```
-Access the application at: `http://localhost:8000`
+- **Local Application URL**: `http://localhost:8000`
+- **Login Portal**: `http://localhost:8000/login.html`
+- **Default Username**: `admin`
+- **Default Password**: `admin123`
 
-### 2. Login Credentials
-- **Username**: `admin`
-- **Password**: `admin123`
+---
 
-### 3. Run Test Suites
+## 4. Dependencies
+
+### Python & Environment
+- **Runtime**: Python 3.8+ (Zero mandatory binary dependencies)
+- **Manifests**: `requirements.txt`, `package.json`
+- **Lockfiles**: `package-lock.json`
+
+---
+
+## 5. Usage
+
+### Interactive Web Studio
+1. **Data Ingestion**: Click **Load Sample Data** or upload any CSV/JSON file to view live tabular records, dimensions, missing value ratios, and quality scores.
+2. **DAG Pipeline Builder**: Select transformers from the palette to construct a dependency graph, execute pipeline stages, and view transformed outputs.
+3. **Transformer Sandbox**: Test individual algorithms on specific feature columns in real-time.
+4. **Data Drift Monitor**: Calculate Population Stability Index (PSI) and Kolmogorov-Smirnov statistics to detect distribution shift.
+5. **Code Generator**: Export the visual DAG recipe into a standalone Python deployment script.
+
+### Running Unit Test Suites
 ```bash
 python -m unittest discover tests
-```
-
-### 4. Measure Production LOC
-```bash
-python measure.py
 ```
