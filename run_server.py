@@ -12,16 +12,18 @@ logger = get_logger("DataMorphServer")
 PORT = 8000
 
 def start_server():
-    server = create_app(port=PORT)
-    url = f"http://localhost:{PORT}"
-    logger.info(f"DataMorph Studio starting on {url}")
+    server = create_app(host="0.0.0.0", port=PORT)
+    url_local = f"http://localhost:{PORT}"
+    url_ip = f"http://127.0.0.1:{PORT}"
+    logger.info(f"DataMorph Studio starting on {url_local} and {url_ip}")
     print(f"==================================================")
     print(f"  DATAMORPH STUDIO - ML PREPROCESSING PLATFORM    ")
     print(f"==================================================")
-    print(f"  Local URL  : {url}")
-    print(f"  Login URL  : {url}/login.html")
-    print(f"  Username   : admin")
-    print(f"  Password   : admin123")
+    print(f"  Localhost URL : {url_local}")
+    print(f"  Direct IP URL : {url_ip}")
+    print(f"  Login Portal  : {url_local}/login.html")
+    print(f"  Username      : admin")
+    print(f"  Password      : admin123")
     print(f"==================================================")
     try:
         server.serve_forever()
