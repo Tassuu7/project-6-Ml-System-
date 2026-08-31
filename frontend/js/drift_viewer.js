@@ -4,8 +4,8 @@ class DriftViewer {
     }
 
     async analyzeDrift() {
-        if (!this.app.currentDatasetId || !this.app.transformedDatasetId) {
-            alert("Execute a pipeline transformation first to analyze drift against baseline!");
+        if (!this.app.currentDatasetId) {
+            alert("Please load or upload a dataset first!");
             return;
         }
 
@@ -14,7 +14,7 @@ class DriftViewer {
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
                 baseline_dataset_id: this.app.currentDatasetId,
-                current_dataset_id: this.app.transformedDatasetId
+                current_dataset_id: this.app.transformedDatasetId || undefined
             })
         });
         const data = await res.json();
