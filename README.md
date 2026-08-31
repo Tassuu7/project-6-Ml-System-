@@ -9,8 +9,8 @@ DataMorph Studio is an enterprise-grade Machine Learning data preprocessing, fea
 ### Clone and Setup Environment
 ```bash
 # Clone repository
-git clone https://github.com/Tassuu7/project-6-Ml-System-repo.git
-cd project-6-Ml-System-repo
+git clone https://github.com/Tassuu7/project-6-Ml-System-.git
+cd project-6-Ml-System-
 
 # Create and activate Python virtual environment
 python -m venv venv
