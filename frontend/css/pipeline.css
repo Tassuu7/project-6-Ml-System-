@@ -1,78 +1,286 @@
-.pipeline-grid {
+/* ==========================================================================
+   DataMorph Studio - Visual DAG Pipeline Builder & Execution Console Styling
+   ========================================================================== */
+
+.dag-builder-layout {
     display: grid;
     grid-template-columns: 280px 1fr;
-    gap: 20px;
+    gap: 16px;
+    height: calc(100vh - 120px);
 }
 
-.transformer-list {
+@media (max-width: 900px) {
+    .dag-builder-layout {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+}
+
+/* Left Palette: Categorized Transformer Library */
+.pipeline-palette-panel {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.palette-search-wrapper {
+    padding: 12px;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.palette-search-input {
+    width: 100%;
+    height: 32px;
+    padding: 0 10px;
+    background: var(--bg-input);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-size: 12px;
+}
+
+.palette-category-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     gap: 8px;
-    padding: 16px;
-    max-height: 520px;
-    overflow-y: auto;
+}
+
+.palette-category-group {
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 8px;
+}
+
+.palette-category-header {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 4px 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .palette-item {
-    padding: 10px 14px;
-    background: #0f172a;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    font-size: 13px;
+    padding: 6px 10px;
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-primary);
     cursor: pointer;
-    transition: all 0.15s ease;
+    margin-top: 4px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    transition: all var(--transition-speed);
 }
 
 .palette-item:hover {
-    border-color: var(--primary);
-    background: rgba(99, 102, 241, 0.1);
+    background: var(--bg-surface-hover);
+    border-color: var(--primary-500);
+    transform: translateX(2px);
 }
 
-.pipeline-canvas {
-    padding: 20px;
-    min-height: 480px;
+.palette-item-add-icon {
+    color: var(--primary-500);
+    font-weight: 700;
+}
+
+/* Center Canvas: DAG Pipeline Workspace */
+.dag-canvas-container {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+    position: relative;
+}
+
+.canvas-toolbar {
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bg-surface);
+}
+
+.canvas-toolbar-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.canvas-pipeline-name-input {
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+}
+
+.canvas-pipeline-name-input:hover,
+.canvas-pipeline-name-input:focus {
+    background: var(--bg-input);
+    border-color: var(--border-medium);
+}
+
+.canvas-toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Canvas Body */
+.dag-canvas-body {
+    flex: 1;
+    overflow: auto;
+    padding: 24px;
+    background-color: var(--bg-base);
+    background-image: radial-gradient(var(--border-subtle) 1px, transparent 1px);
+    background-size: 20px 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.dag-step-node {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-medium);
+    border-radius: var(--radius-lg);
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--shadow-md);
+    position: relative;
+    max-width: 680px;
+    margin: 0 auto;
+    width: 100%;
+    transition: all var(--transition-speed);
+}
+
+.dag-step-node:hover {
+    border-color: var(--primary-500);
+}
+
+.dag-step-node.running {
+    border-color: var(--warning-500);
+    box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
+}
+
+.dag-step-node.completed {
+    border-color: var(--success-500);
+}
+
+.dag-step-left {
+    display: flex;
+    align-items: center;
     gap: 12px;
 }
 
-.stage-node {
-    background: #0f172a;
-    border: 1px solid var(--border-color);
-    border-left: 4px solid var(--primary);
-    border-radius: 8px;
-    padding: 14px 18px;
+.dag-step-order {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-medium);
+    font-size: 11px;
+    font-weight: 700;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
 }
 
-.stage-info {
+.dag-step-info {
     display: flex;
     flex-direction: column;
-    gap: 4px;
 }
 
-.stage-name {
+.dag-step-title {
+    font-size: 13px;
     font-weight: 600;
-    font-size: 14px;
+    color: var(--text-primary);
 }
 
-.stage-detail {
-    font-size: 12px;
+.dag-step-meta {
+    font-size: 11px;
     color: var(--text-muted);
 }
 
-.code-editor {
-    background: #0f172a;
-    padding: 20px;
-    font-family: 'Consolas', 'Courier New', monospace;
-    font-size: 13px;
-    color: #38bdf8;
-    overflow-x: auto;
-    border-radius: 8px;
-    line-height: 1.6;
+.dag-step-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
+
+/* Connector Line Between Steps */
+.dag-connector-line {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 24px;
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+/* Execution Console Drawer */
+.execution-console-panel {
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border-subtle);
+    padding: 14px 18px;
+    display: flex;
+    flex-direction: column;
+    max-height: 240px;
+    overflow-y: auto;
+}
+
+.console-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.console-title {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+}
+
+.console-steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+}
+
+.console-step-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 8px;
+    background: var(--bg-input);
+    border-radius: var(--radius-sm);
+}
+
+.console-step-item.success { color: var(--success-500); }
+.console-step-item.running { color: var(--warning-500); }
+.console-step-item.error { color: var(--danger-500); }

@@ -10,11 +10,16 @@ import urllib.parse
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from datamorph.storage.database import Database
 from datamorph.api.auth_router import handle_login
-from datamorph.api.dataset_router import handle_upload, handle_get_dataset
+from datamorph.api.dataset_router import handle_upload, handle_get_dataset, handle_get_recommendations, handle_get_versions
 from datamorph.api.pipeline_router import handle_execute_pipeline
 from datamorph.api.transform_router import handle_transform_preview
 from datamorph.api.monitoring_router import handle_drift_analysis
 from datamorph.api.export_router import handle_export
+from datamorph.api.overview_router import handle_get_overview
+from datamorph.api.runs_router import handle_get_runs
+from datamorph.api.recipes_router import handle_get_recipes, handle_save_recipe
+from datamorph.api.activity_router import handle_get_activities, handle_get_notifications
+from datamorph.api.settings_router import handle_get_settings, handle_update_settings
 from datamorph.pipeline.registry import TransformerRegistry
 
 DB = Database()
@@ -48,14 +53,38 @@ class DataMorphHTTPHandler(BaseHTTPRequestHandler):
 
         if path == "/api/health":
             self._send_json_response(200, {"status": "healthy", "platform": "DataMorph Studio", "version": "2.4.0"})
+        elif path == "/api/overview":
+            code, res = handle_get_overview(DB)
+            self._send_json_response(code, res)
         elif path == "/api/transformers":
             self._send_json_response(200, {"transformers": TransformerRegistry.list_all()})
+        elif path == "/api/datasets/recommendations" and "id" in query:
+            code, res = handle_get_recommendations(DB, query["id"][0])
+            self._send_json_response(code, res)
+        elif path == "/api/datasets/versions" and "id" in query:
+            code, res = handle_get_versions(DB, query["id"][0])
+            self._send_json_response(code, res)
         elif path == "/api/datasets" and "id" in query:
             code, res = handle_get_dataset(DB, query["id"][0])
             self._send_json_response(code, res)
         elif path == "/api/datasets":
             datasets = list(DB.get_all("datasets").values())
             self._send_json_response(200, {"datasets": datasets})
+        elif path == "/api/runs":
+            code, res = handle_get_runs(DB, query)
+            self._send_json_response(code, res)
+        elif path == "/api/recipes":
+            code, res = handle_get_recipes(DB)
+            self._send_json_response(code, res)
+        elif path == "/api/activity":
+            code, res = handle_get_activities(DB)
+            self._send_json_response(code, res)
+        elif path == "/api/notifications":
+            code, res = handle_get_notifications(DB)
+            self._send_json_response(code, res)
+        elif path == "/api/settings":
+            code, res = handle_get_settings(DB)
+            self._send_json_response(code, res)
         else:
             # Serve Static Frontend Files
             self._serve_static(path)
@@ -82,6 +111,9 @@ class DataMorphHTTPHandler(BaseHTTPRequestHandler):
         elif path == "/api/pipeline/execute":
             code, res = handle_execute_pipeline(DB, body)
             self._send_json_response(code, res)
+        elif path == "/api/recipes":
+            code, res = handle_save_recipe(DB, body)
+            self._send_json_response(code, res)
         elif path == "/api/transform/preview":
             code, res = handle_transform_preview(body)
             self._send_json_response(code, res)
@@ -90,6 +122,9 @@ class DataMorphHTTPHandler(BaseHTTPRequestHandler):
             self._send_json_response(code, res)
         elif path == "/api/export":
             code, res = handle_export(body)
+            self._send_json_response(code, res)
+        elif path == "/api/settings":
+            code, res = handle_update_settings(DB, body)
             self._send_json_response(code, res)
         else:
             self._send_json_response(404, {"error": f"Endpoint '{path}' not found"})

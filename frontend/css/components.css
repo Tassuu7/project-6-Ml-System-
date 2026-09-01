@@ -1,48 +1,420 @@
-.btn {
+/* ==========================================================================
+   DataMorph Studio - Components: Workspace Tabs, Recommendations & Tables
+   ========================================================================== */
+
+/* Sub-Navigation Tabs */
+.workspace-tabs-bar {
+    display: flex;
+    gap: 4px;
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 0 4px;
+    margin-bottom: 16px;
+    overflow-x: auto;
+}
+
+.workspace-tab-btn {
     padding: 8px 16px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 600;
-    border: none;
-    cursor: pointer;
-    transition: all 0.15s ease;
-}
-
-.btn-primary {
-    background: var(--primary);
-    color: #fff;
-}
-
-.btn-primary:hover {
-    background: var(--primary-hover);
-}
-
-.btn-secondary {
-    background: #1e293b;
-    color: #cbd5e1;
-}
-
-.btn-secondary:hover {
-    background: #334155;
-}
-
-.btn-outline {
     background: transparent;
-    border: 1px solid var(--border-color);
-    color: #cbd5e1;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all var(--transition-speed);
 }
 
-.btn-outline:hover {
-    border-color: var(--primary);
-    color: #fff;
+.workspace-tab-btn:hover {
+    color: var(--text-primary);
 }
 
-.btn-success {
-    background: var(--success);
-    color: #fff;
+.workspace-tab-btn.active {
+    color: var(--primary-500);
+    border-bottom-color: var(--primary-500);
+    font-weight: 600;
 }
 
-.btn-sm {
-    padding: 6px 12px;
+.sub-tab-content {
+    display: none;
+}
+
+.sub-tab-content.active {
+    display: block;
+}
+
+/* Smart Recommendations Banner */
+.recommendations-container {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 16px;
+    margin-bottom: 20px;
+}
+
+.recommendations-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.recommendations-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.rec-badge-count {
+    background: rgba(59, 130, 246, 0.15);
+    color: var(--primary-500);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 10px;
+}
+
+.recommendations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 12px;
+}
+
+.recommendation-card {
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-medium);
+    border-radius: var(--radius-md);
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    transition: border-color var(--transition-speed);
+}
+
+.recommendation-card:hover {
+    border-color: var(--primary-500);
+}
+
+.rec-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.rec-issue-title {
     font-size: 12px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.rec-issue-desc {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-top: 2px;
+}
+
+.rec-severity-badge {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+}
+
+.rec-severity-badge.high { background: var(--danger-bg); color: var(--danger-500); }
+.rec-severity-badge.medium { background: var(--warning-bg); color: var(--warning-500); }
+.rec-severity-badge.low { background: var(--info-bg); color: var(--info-500); }
+
+.rec-card-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+/* Tabular Data Grid & Controls */
+.table-controls-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.table-search-input {
+    min-width: 260px;
+    height: 32px;
+    padding: 0 10px;
+    background: var(--bg-input);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 12px;
+}
+
+.column-visibility-dropdown {
+    position: relative;
+}
+
+.column-visibility-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-medium);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    padding: 8px 12px;
+    min-width: 180px;
+    max-height: 240px;
+    overflow-y: auto;
+    z-index: 50;
+    display: none;
+}
+
+.column-visibility-menu.show {
+    display: block;
+}
+
+.col-toggle-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: var(--text-primary);
+    padding: 4px 0;
+    cursor: pointer;
+}
+
+.data-table-wrapper {
+    overflow-x: auto;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    background: var(--bg-surface);
+}
+
+.enterprise-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.enterprise-table th {
+    background: var(--bg-surface-elevated);
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border-medium);
+    cursor: pointer;
+    user-select: none;
+}
+
+.enterprise-table th:hover {
+    color: var(--text-primary);
+}
+
+.enterprise-table td {
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--border-subtle);
+    color: var(--text-primary);
+}
+
+.enterprise-table tr:hover td {
+    background: var(--bg-surface-hover);
+}
+
+.table-pagination-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+.pagination-controls {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Column Deep Analysis Panel */
+.column-analysis-grid {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 16px;
+}
+
+@media (max-width: 800px) {
+    .column-analysis-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.column-list-sidebar {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 10px;
+    max-height: 480px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.col-select-item {
+    padding: 8px 10px;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--text-primary);
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.col-select-item:hover {
+    background: var(--bg-surface-hover);
+}
+
+.col-select-item.active {
+    background: var(--primary-glow);
+    border-color: var(--primary-500);
+    color: var(--primary-500);
+    font-weight: 600;
+}
+
+.column-stats-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 18px;
+}
+
+.column-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.stat-item {
+    background: var(--bg-surface-elevated);
+    border-radius: var(--radius-sm);
+    padding: 10px;
+}
+
+.stat-item-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 700;
+}
+
+.stat-item-value {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-top: 2px;
+}
+
+/* Recipes & Templates Grid */
+.recipes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+}
+
+.recipe-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all var(--transition-speed);
+}
+
+.recipe-card:hover {
+    border-color: var(--primary-500);
+    transform: translateY(-2px);
+}
+
+.recipe-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.recipe-icon {
+    font-size: 20px;
+}
+
+.recipe-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.recipe-desc {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 14px;
+}
+
+.recipe-steps-count {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+}
+
+/* Settings Form Grid */
+.settings-form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 14px;
+}
+
+.form-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.form-input, .form-select {
+    height: 34px;
+    padding: 0 10px;
+    background: var(--bg-input);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 12px;
+    outline: none;
+}
+
+.form-input:focus, .form-select:focus {
+    border-color: var(--primary-500);
 }
